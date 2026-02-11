@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <canvas id="matrix-rain"></canvas>
+    
+    <div class="container">
+        <h1>Мои фотокарточки</h1>
+        
+        <div class="navigation">
+            <ul>
+                <li><a href="#g-1">КОТИК</a></li>
+                <li><a href="#g-2">ДЕТСКОЕ ФОТО</a></li>
+                <li><a href="#g-3">ФОТО СЕЙЧАС</a></li>
+                <li><a href="#g-4">МЕМЫ</a></li>
+                <li><a href="#g-5">НАВИГАЦИЯ ПО САЙТУ</a></li>
+            </ul>
+        </div>
+        
+        <div class="section" id="g-1">
+            <h2>Тот самый котик</h2>
+            <div class="photo-container" style="display: flex; align-items: center; justify-content: center; gap: 50px;">
+                <img src="cat1.jpg" alt="Котик 1" width="300">
+                <img src="cat2.jpg" alt="Котик 2" width="300">
+            </div>
+        </div>
+
+        <div class="section" id="g-2">
+            <h2>Моё детское фото</h2>
+            <div class="photo-container">
+                <img src="tya.jpg" 
+                     alt="Детское фото" width="400">
+            </div>
+        </div>
+
+        <div class="section" id="g-3">
+            <h2>Моё фото сейчас</h2>
+            <div class="photo-container">
+                <img src="ya.jpg" 
+                     alt="Фото сейчас" width="400">
+            </div>
+        </div>
+
+        <div class="section" id="g-4">
+            <h2>Мои любимые мемы</h2>
+            <div class="photo-container" style="display: flex; align-items: center; justify-content: center; gap: 50px;">
+                <img src="mem1.jpg" alt="Мем 1" width="300">
+                <img src="mem2.jpg" alt="Мем 2" width="300">
+            </div>
+        </div>
+        
+        <div class="section" id="g-5">
+            <h2>Навигация по сайту</h2>
+            <div class="navigation">
+                <ul>
+                    <li><a href="index.html">ГЛАВНАЯ</a></li>
+                    <li><a href="hobbies.html">УВЛЕЧЕНИЯ</a></li>
+                    <li><a href="gallery.html" class="active">ГАЛЕРЕЯ</a></li>
+                    <li><a href="contacts.html">КОНТАКТЫ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            © 2025 Страница создана в учебных и практических целях
+        </footer>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+    
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~".split("");
+        const fontSize = 14;
+        const columns = Math.ceil(canvas.width / fontSize);
+    
+        const drops = Array.from({length: columns}, () => Math.random() * -100);
+    
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+            ctx.fillStyle = '#0f0';
+            ctx.font = `${fontSize}px monospace`;
+        
+            for(let i = 0; i < drops.length; i++) {
+                const char = chars[Math.random() * chars.length | 0];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+            
+                ctx.fillText(char, x, y);
+            
+                if(y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            
+                drops[i] += 1;
+            }
+        }
+    
+        let lastTime = 0;
+        const interval = 35;
+    
+        function animate(timestamp) {
+            if (timestamp - lastTime >= interval) {
+                drawMatrix();
+                lastTime = timestamp;
+            }
+            requestAnimationFrame(animate);
+        }
+    
+        requestAnimationFrame(animate);
+    
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+    
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                title.textContent += originalText[charIndex];
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+    
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>

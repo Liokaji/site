@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Увлечения - Матрица</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <canvas id="matrix-rain"></canvas>
+    
+    <div class="container">
+        <h1>МОИ ХАКЕРСКИЕ УВЛЕЧЕНИЯ</h1>
+        
+        <div class="navigation">
+            <ul>
+                <li><a href="#h-1">ВЗЛОМ УМНЫХ ЧАЙНИКОВ</a></li>
+                <li><a href="#h-2">ВИРУСЫ ДЛЯ МИКРОВОЛНОВОК</a></li>
+                <li><a href="#h-3">ПЕРЕПРОГРАММИРОВАНИЕ СВЕТОФОРОВ</a></li>
+                <li><a href="#h-4">БАНКОМАТЫ С СЮРПРИЗОМ</a></li>
+                <li><a href="#h-5">ПЫЛЕСОСЫ ПОД КОНТРОЛЕМ</a></li>
+                <li><a href="#h-6">НАВИГАЦИЯ ПО САЙТУ</a></li>
+            </ul>
+        </div>
+        
+        <div class="section" id="h-1">
+            <h2>Взлом умных чайников</h2>
+            <div class="photo-container">
+                <img src="cha.jpg" 
+                     alt="Умный чайник" width="300">
+            </div>
+            <p>Люблю находить уязвимости в "умных" чайниках. Уже взломал 15 моделей, 
+               чтобы они включались по моему мысленному приказу. Моя гордость - 
+               заставить чайник Philips варить кофе в 3:00 ночи у соседа.</p>
+            <ul class="any-list">
+                <li>Поддерживаю температуру 100°C мыслями</li>
+                <li>Заставляю свистеть гимн Матрицы</li>
+                <li>Дистанционно выключаю у всех на районе</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="h-2">
+            <h2>Вирусы для микроволновок</h2>
+            <div class="photo-container">
+                <img src="mic.jpg" 
+                     alt="Микроволновка" width="500">
+            </div>
+            <p>Пишу вредоносное ПО для микроволновых печей. Мой троян заставляет 
+               печь греть еду только до 33,7°C - идеальная температура для йогурта. 
+               Особенно нравится, когда пицца остается холодной в середине.</p>
+            <ul class="any-list">
+                <li>Время от времени может временно замедлять или ускорять таймер, а иногда даже заставлять идти его в обратную сторону</li>
+                <li>Звук "пип" превращается в зловещий смех</li>
+                <li>Дверь блокируется при попытке разогреть пельмени</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="h-3">
+            <h2>Перепрограммирование светофоров</h2>
+            <div class="photo-container">
+                <img src="sve.jpg" 
+                     alt="Светофоры" width="400">
+            </div>
+            <p>По выходным взламываю городские светофоры. Делаю все три цвета 
+               одновременно зелёными и наблюдаю хаос. Иногда включаю режим "дискотека" - цвета мигают в такт техно-музыке из соседнего клуба.</p>
+            <ul class="any-list">
+                <li>Зелёный для пешеходов - всегда</li>
+                <li>Красный только для таксистов</li>
+                <li>Жёлтый мигает азбукой Морзе</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="h-4">
+            <h2>Банкоматы с сюрпризом</h2>
+            <div class="photo-container">
+                <img src="ban.jpg" 
+                     alt="Банкомат" width="500">
+            </div>
+            <p>Люблю подшутить над банкоматами. Написал скрипт, который вместо денег 
+               выдаёт распечатанные мемы. Самый популярный - котик в маске хакера. 
+               Бонус: банкомат говорит "Хорошего дня!" голосом Морфеуса.</p>
+            <ul class="any-list">
+                <li>Выдаёт конфетки вместо купюр</li>
+                <li>Пишет "Повезёт в другой раз"</li>
+                <li>Считает до 100 перед выдачей карты</li>
+            </ul>
+        </div>
+        
+        <div class="section" id="h-5">
+            <h2>Роботы-пылесосы под контролем</h2>
+            <div class="photo-container">
+                <img src="pyl.jpg" 
+                     alt="Робот-пылесос" width="500">
+            </div>
+            <p>Захватываю контроль над роботами-пылесосами соседей. Заставляю их 
+               выстраиваться в геометрические фигуры или писать оскорбления на ковре. 
+               Мой рекорд - 7 пылесосов, танцующих ламбаду.</p>
+            <ul class="any-list">
+                <li>Вместо всасывания начинают выплевывать мусор и пыль</li>
+                <li>Гоняются за котами (безвредно)</li>
+                <li>Играют в футбол тапочками</li>
+            </ul>
+        </div>
+        
+        <div class="navigation" id="h-6">
+            <ul>
+                <li><a href="index.html">ГЛАВНАЯ</a></li>
+                <li><a href="hobbies.html" class="active">УВЛЕЧЕНИЯ</a></li>
+                <li><a href="gallery.html">ГАЛЕРЕЯ</a></li>
+                <li><a href="contacts.html">КОНТАКТЫ</a></li>
+            </ul>
+        </div>
+        
+        <footer class="site-footer">
+            © 2025 Страница создана в учебных и практических целях
+        </footer>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+    
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~".split("");
+        const fontSize = 14;
+        const columns = Math.ceil(canvas.width / fontSize);
+    
+        const drops = Array.from({length: columns}, () => Math.random() * -100);
+    
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+            ctx.fillStyle = '#0f0';
+            ctx.font = `${fontSize}px monospace`;
+        
+            for(let i = 0; i < drops.length; i++) {
+                const char = chars[Math.random() * chars.length | 0];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+            
+                ctx.fillText(char, x, y);
+            
+                if(y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            
+                drops[i] += 1;
+            }
+        }
+    
+        let lastTime = 0;
+        const interval = 35;
+    
+        function animate(timestamp) {
+            if (timestamp - lastTime >= interval) {
+                drawMatrix();
+                lastTime = timestamp;
+            }
+            requestAnimationFrame(animate);
+        }
+    
+        requestAnimationFrame(animate);
+    
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+    
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                title.textContent += originalText[charIndex];
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+    
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>

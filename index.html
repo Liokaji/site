@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обо мне</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <canvas id="matrix-rain"></canvas>
+    
+    <div class="container">
+        <h1>Anonymous</h1>
+        
+        <div class="navigation">
+            <ul>
+                <li><a href="#a-1">МОЙ АВАТАР</a></li>
+                <li><a href="#a-2">ОБО МНЕ</a></li>
+                <li><a href="#a-3">ИНТЕРЕСЫ</a></li>
+                <li><a href="#a-4">НАВИГАЦИЯ ПО САЙТУ</a></li>
+            </ul>
+        </div>
+        
+        <div class="section" id="a-1">
+            <h2>Мой аватар</h2>
+            <div class="photo-container">
+                <img src="ava.jpg" 
+                     alt="Мой аватар" width="500">
+            </div>
+        </div>
+        
+        <div class="section" id="a-2">
+            <h2>Обо мне</h2>
+            <p>&emsp;&emsp;&emsp;&emsp;Профессиональный исследователь безопасности с нестандартным подходом к тестированию систем. Специализируюсь на области, которую большинство обходит вниманием - безопасности повседневных устройств.</p>
+            <p>&emsp;&emsp;&emsp;&emsp;В свободное время руковожу исследовательским проектом по анализу безопасности городской инфраструктуры и консультирую производителей бытовой техники по вопросам киберзащиты.
+                Работаю над тем, чтобы ваш умный дом не стал умным против вас.</p>
+            <p>&emsp;&emsp;&emsp;&emsp;Моя философия: если можно взломать банк, значит можно взломать и чайник. И если второй проще значит, именно там находятся самые критические уязвимости.
+                Моя миссия - находить уязвимости в системах до того, как это сделают злоумышленники.</p>
+            <p>&emsp;&emsp;&emsp;&emsp;Мой девиз: Лучше я найду дыру в вашей микроволновке, чем это сделает кто-то другой.</p>
+        </div>
+        
+        <div class="section" id="a-3">
+            <h2>Мои профессиональные интересы</h2>
+            <ul class="any-list">
+                <li>Тестирование безопасности интернета вещей (IoT Security Testing)</li>
+                <li>Анализ уязвимостей в протоколах бытовой электроники</li>
+                <li>Разработка сценариев атак для систем городской автоматизации</li>
+                <li>Исследование безопасности финансовых терминалов и банкоматов</li>
+                <li>Пентестинг роботизированных систем и автономных устройств</li>
+                <li>Создание прототипов систем защиты для критической инфраструктуры</li>
+                <li>Обратная разработка прошивок потребительской электроники</li>
+                <li>Разработка инструментов для автоматизированного сканирования уязвимостей</li>
+            </ul>
+
+            <p style="margin-top: 10px; font-style: italic; color: #0a0;">
+                *Все исследования проводятся в контролируемой лабораторной среде с соблюдением этических стандартов*
+            </p>
+        </div>
+        
+        <div class="section" id="a-4">
+            <h2>Навигация по сайту</h2>
+            <div class="navigation">
+                <ul>
+                    <li><a href="index.html" class="active">ГЛАВНАЯ</a></li>
+                    <li><a href="hobbies.html">УВЛЕЧЕНИЯ</a></li>
+                    <li><a href="gallery.html">ГАЛЕРЕЯ</a></li>
+                    <li><a href="contacts.html">КОНТАКТЫ</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            © 2025 Страница создана в учебных и практических целях
+        </footer>
+    </div>
+    
+    <script>
+        const canvas = document.getElementById('matrix-rain');
+        const ctx = canvas.getContext('2d');
+    
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%\"'#&_(),.;:?!\\|{}<>[]^~".split("");
+        const fontSize = 14;
+        const columns = Math.ceil(canvas.width / fontSize);
+    
+        const drops = Array.from({length: columns}, () => Math.random() * -100);
+    
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+            ctx.fillStyle = '#0f0';
+            ctx.font = `${fontSize}px monospace`;
+        
+            for(let i = 0; i < drops.length; i++) {
+                const char = chars[Math.random() * chars.length | 0];
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+            
+                ctx.fillText(char, x, y);
+            
+                if(y > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            
+                drops[i] += 1;
+            }
+        }
+    
+        let lastTime = 0;
+        const interval = 35;
+    
+        function animate(timestamp) {
+            if (timestamp - lastTime >= interval) {
+                drawMatrix();
+                lastTime = timestamp;
+            }
+            requestAnimationFrame(animate);
+        }
+    
+        requestAnimationFrame(animate);
+    
+        const title = document.querySelector('h1');
+        const originalText = title.textContent;
+        title.textContent = '';
+    
+        let charIndex = 0;
+        function typeWriter() {
+            if (charIndex < originalText.length) {
+                title.textContent += originalText[charIndex];
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+    
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
